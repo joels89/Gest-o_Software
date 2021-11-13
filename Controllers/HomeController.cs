@@ -28,7 +28,12 @@ namespace Gestão_Software.Controllers
             return View();
         }
 
-        public IActionResult Sobre()
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
         {
             return View();
         }
