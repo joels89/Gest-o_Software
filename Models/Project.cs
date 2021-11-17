@@ -17,5 +17,9 @@ namespace Gestão_Software.Models
         public string Client { get; set; }
 
         public ICollection<SoftwareRequirement> SoftwareRequirements { get; set; }
+
+        public string BeginDate { get; set; }
+
+        public string EndDate { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-using Gestão_Software.Data;
+﻿using Gestão_Software.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +35,12 @@ namespace Gestão_Software
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddDbContext<ProjectContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("ProjectContext")));
+
+            services.AddDbContext<SoftwareRequirementContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("SoftwareRequirementContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
