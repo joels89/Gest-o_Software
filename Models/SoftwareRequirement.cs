@@ -8,13 +8,13 @@ namespace Gestão_Software.Models
 {
     public class SoftwareRequirement
     {
-        public int SoftwareReqId { get; set; }
+        public int SoftwareRequirementId { get; set; }
 
         [Required]
         [StringLength(256)]
-        public string SoftwareReqTitle { get; set; }
+        public string Name { get; set; }
 
-        public string SoftwareReqDescription { get; set; }
+        public string Description { get; set; }
 
         public Project Project { get; set; }
 
