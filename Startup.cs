@@ -44,7 +44,7 @@ namespace Gestão_Software
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ProjectContext projectContext)
         {
             if (env.IsDevelopment())
             {
@@ -72,6 +72,8 @@ namespace Gestão_Software
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            SeedData.Populate(projectContext);
         }
     }
 }
