@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Gestão_Software.Models;
 
 namespace Gestão_Software.Models.ViewModels
 {
