@@ -1,10 +1,16 @@
-﻿@model IEnumerable<Gestão_Software.Models.Project>
+﻿@model ProjectsListViewModel
 
 @{
-    ViewData["Title"] = "List of Projects Available";
+    ViewData["Title"] = "Lista de Projectos";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>Lista de Projectos</h1>
+
+<p>Total de Projectos na Ferramenta Gestão de Software @Model.PagingInfo.TotalItems projectos</p>
+
+<p>
+    <a asp-action="Create">Criar Novo Projecto</a>
+</p>
 
 <!--Divider-->
 <div class="divider-custom divider-light">
@@ -17,43 +23,42 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                <h5>Projecto</h5>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Client)
+                <h5>Cliente</h5>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BeginDate)
+                <h5>Data de Inicio do Projecto</h5>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EndDate)
+                <h5>Data de Fim do Projecto</h5>
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Client)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BeginDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ProjectId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ProjectId">Delete</a>
-                </td>
-            </tr>
-        }
+@foreach (var item in Model.Projects) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProjectId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ProjectId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProjectId">Apagar</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
 
