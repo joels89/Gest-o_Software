@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gestão_Software.Data;
 using Gestão_Software.Models;
+using Gestão_Software.ViewModels;
 
 namespace Gestão_Software.Controllers
 {
@@ -22,7 +23,26 @@ namespace Gestão_Software.Controllers
         // GET: Projects
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Project.ToListAsync());
+            var pagingInfo = new PagingInfo
+            {
+                CurrentPage = 1,
+                TotalItems = _context.Project.Count()
+            };
+
+            var project = await _context.Project
+                .Include(b => b.Name)
+                .Skip((pagingInfo.CurrentPage - 1) * pagingInfo.PageSize)
+                .Take(pagingInfo.PageSize)
+                .ToListAsync();
+
+
+            return View(
+                new ProjectsListViewModel
+                {
+                    Projects = project,
+                    PagingInfo = pagingInfo
+                }
+            );
         }
 
         // GET: Projects/Details/5

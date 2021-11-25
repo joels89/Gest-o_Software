@@ -1,10 +1,12 @@
-﻿@model IEnumerable<Gestão_Software.Models.Project>
+﻿@model ProjectsListViewModel
 
 @{
     ViewData["Title"] = "Lista de Projectos";
 }
 
 <h1>Lista de Projectos</h1>
+
+<p>Total de Projectos na Ferramenta Gestão de Software @Model.PagingInfo.TotalItems projectos</p>
 
 <p>
     <a asp-action="Create">Criar Novo Projecto</a>
@@ -28,7 +30,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Projects) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
