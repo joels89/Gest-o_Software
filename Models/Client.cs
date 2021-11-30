@@ -13,5 +13,7 @@ namespace Gestão_Software.Models
         [Required]
         [StringLength(256)]
         public string Name { get; set; }
+
+        public ICollection<Project> Projects { get; set; }
     }
 }
