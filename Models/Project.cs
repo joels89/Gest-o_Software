@@ -14,12 +14,13 @@ namespace Gestão_Software.Models
         [StringLength(256)]
         public string Name { get; set; }
 
-        public string Client { get; set; }
-
         public ICollection<SoftwareRequirement> SoftwareRequirements { get; set; }
 
         public string BeginDate { get; set; }
 
         public string EndDate { get; set; }
+
+        public int ClientId { get; set; }
+        public Client Client { get; set; }
     }
 }
