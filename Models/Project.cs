@@ -14,7 +14,7 @@ namespace Gestão_Software.Models
         [StringLength(256)]
         public string Name { get; set; }
 
-        public string Client { get; set; }
+        //public string Client { get; set; }
 
         public ICollection<SoftwareRequirement> SoftwareRequirements { get; set; }
 
