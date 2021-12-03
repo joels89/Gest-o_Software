@@ -64,7 +64,7 @@ namespace Gestão_Software.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProjectId"] = new SelectList(_context.Set<Project>(), "ProjectId", "Name", softwareRequirement.ProjectId);
+            ViewData["ProjectId"] = new SelectList(_context.Set<Project>(), "ProjectId", "Name", softwareRequirement.Project.ProjectId);
             return View(softwareRequirement);
         }
 
@@ -81,7 +81,7 @@ namespace Gestão_Software.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProjectId"] = new SelectList(_context.Set<Project>(), "ProjectId", "Name", softwareRequirement.ProjectId);
+            ViewData["ProjectId"] = new SelectList(_context.Set<Project>(), "ProjectId", "Name", softwareRequirement.Project.ProjectId);
             return View(softwareRequirement);
         }
 
@@ -117,7 +117,7 @@ namespace Gestão_Software.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProjectId"] = new SelectList(_context.Set<Project>(), "ProjectId", "Name", softwareRequirement.ProjectId);
+            ViewData["ProjectId"] = new SelectList(_context.Set<Project>(), "ProjectId", "Name", softwareRequirement.Project.ProjectId);
             return View(softwareRequirement);
         }
 
