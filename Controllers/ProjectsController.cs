@@ -30,7 +30,7 @@ namespace Gestão_Software.Controllers
             };
 
             var project = await _context.Project
-                .Include(b => b.Name)
+                //.Include(b => b.Client)
                 .Skip((pagingInfo.CurrentPage - 1) * pagingInfo.PageSize)
                 .Take(pagingInfo.PageSize)
                 .ToListAsync();
