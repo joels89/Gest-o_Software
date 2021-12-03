@@ -34,6 +34,9 @@
             <th>
                 <h5>Data de Fim do Projecto</h5>
             </th>
+            ´<th>
+                <h5>Projecto Id</h5>
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -52,6 +55,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EndDate)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectId)
+            </td>
+            <td>
+                <a asp-controller="SoftwareRequirements" asp-action="Index" class="btn btn-dark">User Stories</a>
+            </td>    
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ProjectId">Editar</a> |
                 <a asp-action="Details" asp-route-id="@item.ProjectId">Detalhes</a> |
