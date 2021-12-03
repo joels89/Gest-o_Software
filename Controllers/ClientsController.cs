@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Gestão_Software.Data;
-using Gestão_Software.Models;
+using Gestao_Software.Data;
+using Gestao_Software.Models;
 
-namespace Gestão_Software.Controllers
+namespace Gestao_Software.Controllers
 {
     public class ClientsController : Controller
     {

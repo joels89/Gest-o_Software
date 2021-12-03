@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Gestão_Software.Models
+namespace Gestao_Software.Models
 {
     public class SoftwareRequirement
     {

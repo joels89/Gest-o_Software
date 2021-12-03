@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Gestão_Software.Data
+namespace Gestao_Software.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

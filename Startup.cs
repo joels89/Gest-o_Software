@@ -1,4 +1,4 @@
-﻿using Gestão_Software.Data;
+﻿using Gestao_Software.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Gestão_Software
+namespace Gestao_Software
 {
     public class Startup
     {
@@ -39,7 +39,7 @@ namespace Gestão_Software
             services.AddDbContext<ProjectContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("ProjectContext")));
 
-            services.AddDbContext<SoftwareRequirementContext>(options =>
+            services.AddDbContext<ProjectContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SoftwareRequirementContext")));
         }
 

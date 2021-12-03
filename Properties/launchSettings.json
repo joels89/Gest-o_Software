@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Gestão_Software": {
+    "Gestao_Software": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

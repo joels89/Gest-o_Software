@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Gestão_Software.Migrations.SoftwareRequirement
+namespace Gestao_Software.Migrations.SoftwareRequirement
 {
-    [DbContext(typeof(SoftwareRequirementContext))]
+    [DbContext(typeof(ProjectContext))]
     partial class SoftwareRequirementContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -17,7 +17,7 @@ namespace Gestão_Software.Migrations.SoftwareRequirement
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Gestão_Software.Models.Project", b =>
+            modelBuilder.Entity("Gestao_Software.Models.Project", b =>
                 {
                     b.Property<int>("ProjectId")
                         .ValueGeneratedOnAdd()
@@ -43,7 +43,7 @@ namespace Gestão_Software.Migrations.SoftwareRequirement
                     b.ToTable("Project");
                 });
 
-            modelBuilder.Entity("Gestão_Software.Models.SoftwareRequirement", b =>
+            modelBuilder.Entity("Gestao_Software.Models.SoftwareRequirement", b =>
                 {
                     b.Property<int>("SoftwareRequirementId")
                         .ValueGeneratedOnAdd()
@@ -68,9 +68,9 @@ namespace Gestão_Software.Migrations.SoftwareRequirement
                     b.ToTable("SoftwareRequirement");
                 });
 
-            modelBuilder.Entity("Gestão_Software.Models.SoftwareRequirement", b =>
+            modelBuilder.Entity("Gestao_Software.Models.SoftwareRequirement", b =>
                 {
-                    b.HasOne("Gestão_Software.Models.Project", "Project")
+                    b.HasOne("Gestao_Software.Models.Project", "Project")
                         .WithMany("SoftwareRequirements")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -79,7 +79,7 @@ namespace Gestão_Software.Migrations.SoftwareRequirement
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("Gestão_Software.Models.Project", b =>
+            modelBuilder.Entity("Gestao_Software.Models.Project", b =>
                 {
                     b.Navigation("SoftwareRequirements");
                 });

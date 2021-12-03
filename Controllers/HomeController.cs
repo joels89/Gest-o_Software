@@ -1,4 +1,4 @@
-﻿using Gestão_Software.Models;
+﻿using Gestao_Software.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Gestão_Software.Controllers
+namespace Gestao_Software.Controllers
 {
     public class HomeController : Controller
     {

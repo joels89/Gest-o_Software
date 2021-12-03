@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 //#define TEST_PAGINATION_PROJECTS;
 
-namespace Gestão_Software.Data
+namespace Gestao_Software.Data
 {
     public class SeedData
     {

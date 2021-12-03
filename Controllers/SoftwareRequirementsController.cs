@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Gestão_Software.Models;
+using Gestao_Software.Models;
 
-namespace Gestão_Software.Controllers
+namespace Gestao_Software.Controllers
 {
     public class SoftwareRequirementsController : Controller
     {
-        private readonly SoftwareRequirementContext _context;
+        private readonly ProjectContext _context;
 
-        public SoftwareRequirementsController(SoftwareRequirementContext context)
+        public SoftwareRequirementsController(ProjectContext context)
         {
             _context = context;
         }
