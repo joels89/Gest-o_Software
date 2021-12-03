@@ -15,5 +15,7 @@ namespace Gestão_Software.Data
         }
 
         public DbSet<Gestão_Software.Models.Project> Project { get; set; }
+
+        public DbSet<Gestão_Software.Models.Client> Client { get; set; }
     }
 }
