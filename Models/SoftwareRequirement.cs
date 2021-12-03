@@ -16,7 +16,6 @@ namespace Gestão_Software.Models
 
         public string Description { get; set; }
 
-        public int ProjectId { get; set; }
         public Project Project { get; set; }
 
     }
