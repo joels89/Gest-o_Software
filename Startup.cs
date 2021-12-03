@@ -38,9 +38,6 @@ namespace Gestao_Software
 
             services.AddDbContext<ProjectContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("ProjectContext")));
-
-            services.AddDbContext<ProjectContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SoftwareRequirementContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
