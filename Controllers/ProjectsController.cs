@@ -29,6 +29,16 @@ namespace Gestao_Software.Controllers
                 TotalItems = _context.Project.Count()
             };
 
+            if (pagingInfo.CurrentPage > pagingInfo.TotalPages)
+            {
+                pagingInfo.CurrentPage = pagingInfo.TotalPages;
+            }
+
+            if (pagingInfo.CurrentPage < 1)
+            {
+                pagingInfo.CurrentPage = 1;
+            }
+
             var project = await _context.Project
                 .Include(b => b.Client)
                 .OrderBy(b => b.Name)
