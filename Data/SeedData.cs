@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿//#define TEST_PAGINATION_PROJECTS
+
+using Gestao_Software.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-//#define TEST_PAGINATION_PROJECTS;
 
 namespace Gestao_Software.Data
 {
@@ -12,15 +13,25 @@ namespace Gestao_Software.Data
     {
         internal static void Populate(ProjectContext projectContext){
 #if TEST_PAGINATION_PROJECTS
-			for (int i = 1; i <= 1000; i++) {
-				ProjectContext.Project.Add(
-					new Project{
+			Client client = projectContext.Client.FirstOrDefault();
 
+			if (client == null) {
+				client = new Client { Name = "Anonymous" };
+				projectContext.Add(client);
+			}
+
+			for (int i = 1; i <= 1000; i++) {
+				projectContext.Project.Add(
+					new Project{
+						Name = "Project " + i,
+						BeginDate = "1000 " + i,
+						EndDate = "1001 " + i,
+						Client = client
 					}
 				);
 			}
 
-			ProjectContext.SaveChanges();
+            projectContext.SaveChanges();
 #endif
 		}
 	}

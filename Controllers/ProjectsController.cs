@@ -21,16 +21,27 @@ namespace Gestao_Software.Controllers
         }
 
         // GET: Projects
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
             var pagingInfo = new PagingInfo
             {
-                CurrentPage = 1,
+                CurrentPage = page,
                 TotalItems = _context.Project.Count()
             };
 
+            if (pagingInfo.CurrentPage > pagingInfo.TotalPages)
+            {
+                pagingInfo.CurrentPage = pagingInfo.TotalPages;
+            }
+
+            if (pagingInfo.CurrentPage < 1)
+            {
+                pagingInfo.CurrentPage = 1;
+            }
+
             var project = await _context.Project
                 .Include(b => b.Client)
+                .OrderBy(b => b.Name)
                 .Skip((pagingInfo.CurrentPage - 1) * pagingInfo.PageSize)
                 .Take(pagingInfo.PageSize)
                 .ToListAsync();
