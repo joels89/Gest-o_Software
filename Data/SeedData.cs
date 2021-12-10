@@ -1,4 +1,4 @@
-﻿//#define TEST_PAGINATION_PROJECTS
+﻿#define TEST_PAGINATION_PROJECTS
 
 using Gestao_Software.Models;
 using Microsoft.AspNetCore.Mvc;
