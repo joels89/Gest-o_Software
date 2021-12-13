@@ -24,8 +24,8 @@ namespace Gestao_Software.Data
 				projectContext.Project.Add(
 					new Project{
 						Name = "Project " + i,
-						BeginDate = "1000 " + i,
-						EndDate = "1001 " + i,
+						BeginDate = new DateTime(),
+						EndDate = new DateTime(),
 						Client = client
 					}
 				);
