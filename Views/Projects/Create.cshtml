@@ -12,15 +12,27 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                @{
+                    Client clientSelected = null;
+                    }
                 <label asp-for="Client" class="control-label"></label>
-                <input asp-for="Client" class="form-control" />
-                <span asp-validation-for="Client" class="text-danger"></span>
+                <select class="form-select" aria-label="Default select example">
+                    @foreach (var std in ViewData["ListOfClients"] as IEnumerable<Client>)
+                    {
+                        <option value="@std">@std.Name</option>
+                        clientSelected = std;
+                    }
+                </select>
+                <input asp-for="@clientSelected" class="form-control" />
+                <span asp-validation-for="@clientSelected" class="text-danger"></span>
+
             </div>
             <div class="form-group">
                 <label asp-for="BeginDate" class="control-label"></label>

@@ -37,7 +37,9 @@
             ´<th>
                 <h5>Projecto Id</h5>
             </th>
-            <th></th>
+            <th>
+                <h5>Software Requirements</h5>
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -59,7 +61,7 @@
                 @Html.DisplayFor(modelItem => item.ProjectId)
             </td>
             <td>
-                <a asp-controller="SoftwareRequirements" asp-action="Index" class="btn btn-dark">User Stories</a>
+                <a asp-controller="SoftwareRequirements" asp-action="Index" asp-route-id="@item.ProjectId">User Stories</a>
             </td>    
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ProjectId">Editar</a> |

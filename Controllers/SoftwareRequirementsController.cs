@@ -20,7 +20,7 @@ namespace Gestao_Software.Controllers
         }
 
         // GET: SoftwareRequirements
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
             var softwareRequirementContext = _context.SoftwareRequirement.Include(s => s.Project);
             return View(await softwareRequirementContext.ToListAsync());
@@ -48,7 +48,8 @@ namespace Gestao_Software.Controllers
         // GET: SoftwareRequirements/Create
         public IActionResult Create()
         {
-            ViewData["ProjectId"] = new SelectList(_context.Set<Project>(), "ProjectId", "Name");
+            ViewData["ListOfProjects"] = new SelectList(_context.Project);
+
             return View();
         }
 

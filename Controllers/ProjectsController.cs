@@ -66,6 +66,7 @@ namespace Gestao_Software.Controllers
         // GET: Projects/Create
         public IActionResult Create()
         {
+            ViewData["ListOfClients"] = _context.Client;
             return View();
         }
 
