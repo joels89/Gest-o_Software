@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\projmigrations\" />
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
 

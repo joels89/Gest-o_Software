@@ -17,9 +17,9 @@ namespace Gestao_Software.Models
 
         public ICollection<SoftwareRequirement> SoftwareRequirements { get; set; }
 
-        public string BeginDate { get; set; }
+        public DateTime BeginDate { get; set; }
 
-        public string EndDate { get; set; }
+        public DateTime EndDate { get; set; }
 
         [DisplayName("Client")]
         public int ClientId { get; set; }
