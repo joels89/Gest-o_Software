@@ -1,55 +1,40 @@
-﻿@model ProjectsListViewModel
+﻿@model IEnumerable<Gestao_Software.Models.Project>
 
 @{
-    ViewData["Title"] = "Lista de Projectos";
+    ViewData["Title"] = "Index";
 }
 
-<h1>Lista de Projectos</h1>
-
-<p>Total de Projectos na Ferramenta Gestão de Software @Model.PagingInfo.TotalItems projectos</p>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Criar Novo Projecto</a>
+    <a asp-action="Create">Create New</a>
 </p>
-
-<!--Divider-->
-<div class="divider-custom divider-light">
-    <div class="divider-custom-line"></div>
-    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-    <div class="divider-custom-line"></div>
-</div>
-
 <table class="table">
     <thead>
         <tr>
             <th>
-                <h5>Projecto</h5>
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                <h5>Cliente</h5>
+                @Html.DisplayNameFor(model => model.BeginDate)
             </th>
             <th>
-                <h5>Data de Inicio do Projecto</h5>
+                @Html.DisplayNameFor(model => model.EndDate)
             </th>
             <th>
-                <h5>Data de Fim do Projecto</h5>
-            </th>
-            ´<th>
-                <h5>Projecto Id</h5>
+                @Html.DisplayNameFor(model => model.Client)
             </th>
             <th>
-                <h5>Software Requirements</h5>
+                
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Projects) {
+@foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Client)
+                <a asp-controller="SoftwareRequirements" asp-action="Index" asp-route-id=@item.ProjectId class="btn btn-dark">@Html.DisplayFor(modelItem => item.Name)</a>|
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BeginDate)
@@ -58,30 +43,14 @@
                 @Html.DisplayFor(modelItem => item.EndDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProjectId)
+                @Html.DisplayFor(modelItem => item.Client.Name)
             </td>
             <td>
-                <a asp-controller="SoftwareRequirements" asp-action="Index" asp-route-id="@item.ProjectId">User Stories</a>
-            </td>    
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProjectId">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.ProjectId">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProjectId">Apagar</a>
+                <a asp-action="Edit" asp-route-id="@item.ProjectId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProjectId">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-
-<!--Divider-->
-<div class="divider-custom divider-light">
-    <div class="divider-custom-line"></div>
-    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-    <div class="divider-custom-line"></div>
-</div>
-
-<p>
-    <a asp-action="Create" class="btn btn-dark">Create New Project</a>
-</p>
-
-

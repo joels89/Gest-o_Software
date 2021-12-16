@@ -1,46 +1,47 @@
-﻿  @model Gestao_Software.Models.Project
+﻿@model Gestao_Software.Models.Project
 
 @{
-    ViewData["Title"] = "Editar";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Editar Projecto</h1>
+<h1>Edit</h1>
 
+<h4>Project</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Editar">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProjectId" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label">Nome</label>
-                <Input asp-for="Name" class="form-control" maxlength="100" size="100"/>
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Client" class="control-label">Cliente</label>
-                <Input asp-for="Client" class="form-control" maxlength="100" size="100"/>
-                <span asp-validation-for="Client" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BeginDate" class="control-label">Data de Começo</label>
-                <Input asp-for="BeginDate" class="form-control" maxlength="100" size="100"/>
+                <label asp-for="BeginDate" class="control-label"></label>
+                <input asp-for="BeginDate" class="form-control" />
                 <span asp-validation-for="BeginDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EndDate" class="control-label">Data de Fim</label>
-                <Input asp-for="EndDate" class="form-control" maxlength="100" size="100"/>
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <label asp-for="ClientId" class="control-label"></label>
+                <select asp-for="ClientId" class="form-control" asp-items="ViewBag.ClientId"></select>
+                <span asp-validation-for="ClientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Voltar para Lista</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
