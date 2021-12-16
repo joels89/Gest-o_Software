@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Gestao_Software.Models;
 using Gestao_Software.Data;
+using Gestao_Software.Models;
 
-namespace Gestao_Software.Controllers
+namespace Gestão_Software.Controllers
 {
     public class SoftwareRequirementsController : Controller
     {
@@ -22,7 +22,9 @@ namespace Gestao_Software.Controllers
         // GET: SoftwareRequirements
         public async Task<IActionResult> Index(int id)
         {
-            var softwareRequirementContext = _context.SoftwareRequirement.Include(s => s.Project);
+
+
+            var softwareRequirementContext = _context.SoftwareRequirement.Where(s => s.ProjectId == id);
             return View(await softwareRequirementContext.ToListAsync());
         }
 
@@ -48,8 +50,7 @@ namespace Gestao_Software.Controllers
         // GET: SoftwareRequirements/Create
         public IActionResult Create()
         {
-            ViewData["ListOfProjects"] = new SelectList(_context.Project);
-
+            ViewData["ProjectId"] = new SelectList(_context.Project, "ProjectId", "Name");
             return View();
         }
 
@@ -66,7 +67,7 @@ namespace Gestao_Software.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProjectId"] = new SelectList(_context.Set<Project>(), "ProjectId", "Name", softwareRequirement.Project.ProjectId);
+            ViewData["ProjectId"] = new SelectList(_context.Project, "ProjectId", "Name", softwareRequirement.ProjectId);
             return View(softwareRequirement);
         }
 
@@ -83,7 +84,7 @@ namespace Gestao_Software.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProjectId"] = new SelectList(_context.Set<Project>(), "ProjectId", "Name", softwareRequirement.Project.ProjectId);
+            ViewData["ProjectId"] = new SelectList(_context.Project, "ProjectId", "Name", softwareRequirement.ProjectId);
             return View(softwareRequirement);
         }
 
@@ -119,7 +120,7 @@ namespace Gestao_Software.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProjectId"] = new SelectList(_context.Set<Project>(), "ProjectId", "Name", softwareRequirement.Project.ProjectId);
+            ViewData["ProjectId"] = new SelectList(_context.Project, "ProjectId", "Name", softwareRequirement.ProjectId);
             return View(softwareRequirement);
         }
 
