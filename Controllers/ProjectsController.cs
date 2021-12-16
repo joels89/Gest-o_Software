@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gestao_Software.Data;
 using Gestao_Software.Models;
+using Gestao_Software.ViewModels;
 
 namespace Gestão_Software.Controllers { 
 
