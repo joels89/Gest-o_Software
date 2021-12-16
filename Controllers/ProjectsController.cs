@@ -7,10 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gestao_Software.Data;
 using Gestao_Software.Models;
-using Gestao_Software.ViewModels;
 
-namespace Gestao_Software.Controllers
-{
+namespace Gestão_Software.Controllers { 
+
     public class ProjectsController : Controller
     {
         private readonly ProjectContext _context;
@@ -23,26 +22,21 @@ namespace Gestao_Software.Controllers
         // GET: Projects
         public async Task<IActionResult> Index()
         {
-            var pagingInfo = new PagingInfo
-            {
-                CurrentPage = 1,
-                TotalItems = _context.Project.Count()
-            };
+            var projectContext = _context.Project.Include(p => p.Client);
+            return View(await projectContext.ToListAsync());
+        }
 
-            var project = await _context.Project
-                .Include(b => b.Client)
-                .Skip((pagingInfo.CurrentPage - 1) * pagingInfo.PageSize)
-                .Take(pagingInfo.PageSize)
-                .ToListAsync();
+        /*public async Task<IActionResult> ClientProjectList(int id)
+        {
+            var projectContext = _context.Project.Where(s => s.ClientId == id);
+            return View(await projectContext.ToListAsync());
+        }*/
 
 
-            return View(
-                new ProjectsListViewModel
-                {
-                    Projects = project,
-                    PagingInfo = pagingInfo
-                }
-            );
+        public async Task<IActionResult> ClientProjectList(int id)
+        {
+            var projectContext = _context.Project.Where(s => s.ClientId == id);
+            return View("Index",await projectContext.ToListAsync());
         }
 
         // GET: Projects/Details/5
@@ -54,6 +48,7 @@ namespace Gestao_Software.Controllers
             }
 
             var project = await _context.Project
+                .Include(p => p.Client)
                 .FirstOrDefaultAsync(m => m.ProjectId == id);
             if (project == null)
             {
@@ -66,7 +61,7 @@ namespace Gestao_Software.Controllers
         // GET: Projects/Create
         public IActionResult Create()
         {
-            ViewData["ListOfClients"] = _context.Client;
+            ViewData["ClientId"] = new SelectList(_context.Client, "ClientId", "Name");
             return View();
         }
 
@@ -75,7 +70,7 @@ namespace Gestao_Software.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProjectId,Name,Client,BeginDate,EndDate")] Project project)
+        public async Task<IActionResult> Create([Bind("ProjectId,Name,BeginDate,EndDate,ClientId")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -83,6 +78,7 @@ namespace Gestao_Software.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ClientId"] = new SelectList(_context.Client, "ClientId", "Name", project.ClientId);
             return View(project);
         }
 
@@ -99,6 +95,7 @@ namespace Gestao_Software.Controllers
             {
                 return NotFound();
             }
+            ViewData["ClientId"] = new SelectList(_context.Client, "ClientId", "Name", project.ClientId);
             return View(project);
         }
 
@@ -107,7 +104,7 @@ namespace Gestao_Software.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProjectId,Name,Client,BeginDate,EndDate")] Project project)
+        public async Task<IActionResult> Edit(int id, [Bind("ProjectId,Name,BeginDate,EndDate,ClientId")] Project project)
         {
             if (id != project.ProjectId)
             {
@@ -134,6 +131,7 @@ namespace Gestao_Software.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ClientId"] = new SelectList(_context.Client, "ClientId", "Name", project.ClientId);
             return View(project);
         }
 
@@ -146,6 +144,7 @@ namespace Gestao_Software.Controllers
             }
 
             var project = await _context.Project
+                .Include(p => p.Client)
                 .FirstOrDefaultAsync(m => m.ProjectId == id);
             if (project == null)
             {
