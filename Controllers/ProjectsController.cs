@@ -21,12 +21,15 @@ namespace Gestao_Software.Controllers
         }
 
         // GET: Projects
-        public async Task<IActionResult> Index(int page = 1)
+        public async Task<IActionResult> Index(string name, int page = 1)
         {
+            var projectSearch = _context.Project
+                .Where(b => name == null || b.Name.Contains(name));
+
             var pagingInfo = new PagingInfo
             {
                 CurrentPage = page,
-                TotalItems = _context.Project.Count()
+                TotalItems = projectSearch.Count()
             };
 
             if (pagingInfo.CurrentPage > pagingInfo.TotalPages)
