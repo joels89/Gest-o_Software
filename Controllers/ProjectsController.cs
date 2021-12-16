@@ -54,7 +54,8 @@ namespace Gestao_Software.Controllers
                 new ProjectsListViewModel
                 {
                     Projects = project,
-                    PagingInfo = pagingInfo
+                    PagingInfo = pagingInfo,
+                    NameSearched = name
                 }
             );
         }
