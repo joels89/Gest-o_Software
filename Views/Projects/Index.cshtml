@@ -1,12 +1,10 @@
-﻿@model ProjectsListViewModel
+﻿@model IEnumerable<Gestao_Software.Models.Project>
 
 @{
-    ViewData["Title"] = "Lista de Projectos";
+    ViewData["Title"] = "Index";
 }
 
-<h1>Lista de Projectos</h1>
-
-<p>Total de Projectos na Ferramenta Gestão de Software @Model.PagingInfo.TotalItems projectos</p>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-dark">Criar Novo Projecto</a>
@@ -23,21 +21,20 @@
         </form>
     </div>
 </div>
-
 <table class="table">
     <thead>
         <tr>
             <th>
-                <h5>Projecto</h5>
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                <h5>Cliente</h5>
+                @Html.DisplayNameFor(model => model.BeginDate)
             </th>
             <th>
-                <h5>Data de Inicio do Projecto</h5>
+                @Html.DisplayNameFor(model => model.EndDate)
             </th>
             <th>
-                <h5>Data de Fim do Projecto</h5>
+                @Html.DisplayNameFor(model => model.Client)
             </th>
             <th>
                 <h5>Id do Projecto</h5>
@@ -46,37 +43,29 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Projects)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Client.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BeginDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectId)
-                </td>
-                <td>
-                    <a asp-controller="SoftwareRequirements" asp-action="Index" class="btn btn-dark">User Stories</a>
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ProjectId">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.ProjectId">Detalhes</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ProjectId">Apagar</a>
-                </td>
-            </tr>
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-controller="SoftwareRequirements" asp-action="Index" asp-route-id=@item.ProjectId class="btn btn-dark">@Html.DisplayFor(modelItem => item.Name)</a>|
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProjectId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProjectId">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
-
 <nav class="mt-3">
     <ul class="pagination">
         @{
@@ -130,7 +119,3 @@
         }
     </ul>
 </nav>
-
-
-
-

@@ -7,10 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gestao_Software.Data;
 using Gestao_Software.Models;
-using Gestao_Software.ViewModels;
 
-namespace Gestao_Software.Controllers
-{
+namespace Gestão_Software.Controllers { 
+
     public class ProjectsController : Controller
     {
         private readonly ProjectContext _context;
@@ -58,6 +57,19 @@ namespace Gestao_Software.Controllers
                     NameSearched = name
                 }
             );
+        }
+
+        /*public async Task<IActionResult> ClientProjectList(int id)
+        {
+            var projectContext = _context.Project.Where(s => s.ClientId == id);
+            return View(await projectContext.ToListAsync());
+        }*/
+
+
+        public async Task<IActionResult> ClientProjectList(int id)
+        {
+            var projectContext = _context.Project.Where(s => s.ClientId == id);
+            return View("Index",await projectContext.ToListAsync());
         }
 
         // GET: Projects/Details/5

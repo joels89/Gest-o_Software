@@ -15,14 +15,16 @@ namespace Gestao_Software.Models
         [StringLength(256)]
         public string Name { get; set; }
 
-        public ICollection<SoftwareRequirement> SoftwareRequirements { get; set; }
-
         public DateTime BeginDate { get; set; }
 
         public DateTime EndDate { get; set; }
 
         [DisplayName("Client")]
+      
         public int ClientId { get; set; }
+      
         public Client Client { get; set; }
+
+        public ICollection<SoftwareRequirement> SoftwareRequirements { get; set; }
     }
 }
