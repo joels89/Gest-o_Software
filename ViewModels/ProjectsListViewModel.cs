@@ -10,6 +10,7 @@ namespace Gestao_Software.ViewModels
     {
         public IEnumerable<Project> Projects { get; set; }
         public PagingInfo PagingInfo { get; set; }
-        
+        public string NameSearched { get; set; }
+
     }
 }

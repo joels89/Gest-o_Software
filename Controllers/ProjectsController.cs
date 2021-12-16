@@ -21,12 +21,15 @@ namespace Gestao_Software.Controllers
         }
 
         // GET: Projects
-        public async Task<IActionResult> Index(int page = 1)
+        public async Task<IActionResult> Index(string name, int page = 1)
         {
+            var projectSearch = _context.Project
+                .Where(b => name == null || b.Name.Contains(name));
+
             var pagingInfo = new PagingInfo
             {
                 CurrentPage = page,
-                TotalItems = _context.Project.Count()
+                TotalItems = projectSearch.Count()
             };
 
             if (pagingInfo.CurrentPage > pagingInfo.TotalPages)
@@ -39,7 +42,7 @@ namespace Gestao_Software.Controllers
                 pagingInfo.CurrentPage = 1;
             }
 
-            var project = await _context.Project
+            var project = await projectSearch
                 .Include(b => b.Client)
                 .OrderBy(b => b.Name)
                 .Skip((pagingInfo.CurrentPage - 1) * pagingInfo.PageSize)
@@ -51,7 +54,8 @@ namespace Gestao_Software.Controllers
                 new ProjectsListViewModel
                 {
                     Projects = project,
-                    PagingInfo = pagingInfo
+                    PagingInfo = pagingInfo,
+                    NameSearched = name
                 }
             );
         }
