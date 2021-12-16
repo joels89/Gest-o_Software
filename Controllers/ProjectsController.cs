@@ -42,7 +42,7 @@ namespace Gestao_Software.Controllers
                 pagingInfo.CurrentPage = 1;
             }
 
-            var project = await _context.Project
+            var project = await projectSearch
                 .Include(b => b.Client)
                 .OrderBy(b => b.Name)
                 .Skip((pagingInfo.CurrentPage - 1) * pagingInfo.PageSize)
