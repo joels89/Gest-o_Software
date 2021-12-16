@@ -2,20 +2,112 @@
 @{
     ViewData["Title"] = "About";
 }
+<style>
+    h1 {
+        text-align: center;
+        color: white;
+    }
 
-<h1>Sobre</h1>
+    h2 {
+        color: white
+    }
 
-<!-- Icon Divider-->
-<div class="divider-custom divider-light">
-    <div class="divider-custom-line"></div>
-    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-    <div class="divider-custom-line"></div>
+    h5 {
+        color: white
+    }
+
+    h6 {
+        color: white
+    }
+
+    body {
+        background-color: lightslategrey
+    }
+
+    .img-box {
+        margin: 40px;
+    }
+
+    .avatar-link {
+        display: inline-block;
+        position: relative;
+    }
+
+        .avatar-link::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 14.8%;
+            right: 14.8%;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            transform: translate(5px, 5px); /* half width and height */
+            border-radius: 50%;
+        }
+
+        .avatar-link img {
+            border-radius: 50%;
+            vertical-align: top;
+        }
+</style>
+
+<div style="text-align:center;margin-top:50px"> <img src="~/img/projetos.png" ; style="width:300px; height:220px; align-content:center" /> </div>
+<div style="text-align:center;margin-top:100px;">
+
+    <h2>Sobre o grupo</h2>
+
+    <!--Divider-->
+    <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+    </div>
+
+    <h5>
+        O nosso grupo é constituido por 2 alunos da licenciatura de engenharia informática.
+    </h5>
 </div>
+<section>
+    <div class="row">
+        <div class="col">
+            <div class="img-box" style="text-align:center">
+                <a class="avatar-link" href="#">
+                    João Saraiva
+                    <div class="corner-finder"></div>
+                    <img src="~/img/Jsaraiva.jpg" style="height:150px; width:150px;" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="img-box" style="text-align:center">
+                <a class="avatar-link" href="#">
+                    Joel Sousa
+                    <div class="corner-finder"></div>
+                    <img src="~/img/joel.jpg" style="height:150px; width:150px;" alt="">
+                </a>
+            </div>
+        </div>
+</section>
 
-<!-- About Section Content-->
-<div class="rowAbout">
-    <div class="my-auto"><p class="lead">Este projeto foi desenvolvido para a unidade curricular de programação para a internet e o seu objetivo era aplicar os conhecimentos obitdos nas aulas e desenvolver um website.</p></div>
-</div>
+<h6>
+    Este trabalho foi desenvolvido para a unidade curricular de programação para a internet <br> e o trabalho consiste em criar uma plataforma onde seja possivel fazer a gestão de projetos.<br>
+</h6>
+
+<section class="signup-section" id="signup" style="margin-top:150px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto text-center">
+                <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+                <h2 class="text-white mb-5">Subscreva para receberer as noticias mais recentes!</h2>
+                <form class="form-inline d-flex">
+                    <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="email" placeholder="Enter email address..." />
+                    <button class="btn btn-primary mx-auto" type="submit">Subscrever</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
 
 
 

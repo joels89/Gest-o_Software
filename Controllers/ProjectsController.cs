@@ -20,10 +20,43 @@ namespace Gestão_Software.Controllers {
         }
 
         // GET: Projects
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string name, int page = 1)
         {
-            var projectContext = _context.Project.Include(p => p.Client);
-            return View(await projectContext.ToListAsync());
+            var projectSearch = _context.Project
+                .Where(b => name == null || b.Name.Contains(name));
+
+            var pagingInfo = new PagingInfo
+            {
+                CurrentPage = page,
+                TotalItems = projectSearch.Count()
+            };
+
+            if (pagingInfo.CurrentPage > pagingInfo.TotalPages)
+            {
+                pagingInfo.CurrentPage = pagingInfo.TotalPages;
+            }
+
+            if (pagingInfo.CurrentPage < 1)
+            {
+                pagingInfo.CurrentPage = 1;
+            }
+
+            var project = await projectSearch
+                .Include(b => b.Client)
+                .OrderBy(b => b.Name)
+                .Skip((pagingInfo.CurrentPage - 1) * pagingInfo.PageSize)
+                .Take(pagingInfo.PageSize)
+                .ToListAsync();
+
+
+            return View(
+                new ProjectsListViewModel
+                {
+                    Projects = project,
+                    PagingInfo = pagingInfo,
+                    NameSearched = name
+                }
+            );
         }
 
         /*public async Task<IActionResult> ClientProjectList(int id)
