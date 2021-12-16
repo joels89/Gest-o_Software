@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Gestao_Software.Models.Project>
+﻿@model ProjectsListViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -25,25 +25,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                <h5>Nome do Projecto</h5>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BeginDate)
+                <h5>Data de Inicio</h5>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EndDate)
+                <h5>Data de Fim</h5>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Client)
-            </th>
-            <th>
-                <h5>Id do Projecto</h5>
+                <h5>Nome do Cliente</h5>
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Projects) {
         <tr>
             <td>
                 <a asp-controller="SoftwareRequirements" asp-action="Index" asp-route-id=@item.ProjectId class="btn btn-dark">@Html.DisplayFor(modelItem => item.Name)</a>|
