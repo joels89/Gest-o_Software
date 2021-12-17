@@ -4,38 +4,38 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Novo Projeto</h1>
+<h1>Novo Projecto</h1>
 
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+            <div class="form-row">
+                <label asp-for="Name">Projecto</label>
+                <input asp-for="Name" class="form-control" placeholder="Nome do Projecto" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <br>
             <div class="form-group">
-                <label asp-for="BeginDate" class="control-label"></label>
-                <input asp-for="BeginDate" class="form-control" />
+                <label asp-for="BeginDate">Data Inicial</label>
+                <input asp-for="BeginDate" class="form-control" placeholder="Data Inicial" />
                 <span asp-validation-for="BeginDate" class="text-danger"></span>
             </div>
             <br>
             <div class="form-group">
-                <label asp-for="EndDate" class="control-label"></label>
+                <label asp-for="EndDate" >Data Final</label>
                 <input asp-for="EndDate" class="form-control" />
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
             <br>
             <div class="form-group">
-                <label asp-for="ClientId" class="control-label"></label>
+                <label asp-for="ClientId" >Cliente</label>
                 <select asp-for="ClientId" class="form-control" asp-items="ViewBag.ClientId"></select>
             </div>
             <br>
-            <div class="form-group">
-                <input type="submit" value="Criar" class="btn btn-primary" />
+            <div class="text-center">
+                <input type="submit" value="Criar" class="btn btn-success" />
             </div>
             <br>
         </form>
@@ -43,7 +43,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Voltar</a>
+    <a asp-action="Index" class="btn btn-secondary btn-sm">&laquo; Voltar &raquo;</a>
 </div>
 
 @section Scripts {

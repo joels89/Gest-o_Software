@@ -1190,8 +1190,8 @@ progress {
   }
 
   .col-md-4 {
-    flex: 10px 10px auto;
-    width: 100%;
+    flex: 0 0 auto;
+    width: 10%;
   }
 
   .col-md-5 {
@@ -4542,9 +4542,6 @@ textarea.form-control-lg {
   background-clip: border-box;
   border: 0.125rem solid rgba(0, 0, 0, 0.125);
   border-radius: 0.5rem;
-}
-card-Pesquisa {
-    width: 100%;
 }
 .card > hr {
   margin-right: 0;

@@ -67,7 +67,7 @@ namespace Gestão_Software.Controllers {
         }*/
 
 
-        public async Task<IActionResult> ClientProjectList(int id)
+        public async Task<IActionResult> ClientProjectsList(int id)
         {
             var projectContext = _context.Project.Where(s => s.ClientId == id);
             return View(await projectContext.ToListAsync());
