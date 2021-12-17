@@ -70,7 +70,7 @@ namespace Gestão_Software.Controllers {
         public async Task<IActionResult> ClientProjectList(int id)
         {
             var projectContext = _context.Project.Where(s => s.ClientId == id);
-            return View("Index",await projectContext.ToListAsync());
+            return View(await projectContext.ToListAsync());
         }
 
         // GET: Projects/Details/5
