@@ -6,6 +6,13 @@
 
 <h1>Lista de Projetos</h1>
 
+<!--Divider-->
+<div class="divider-custom divider-light">
+    <div class="divider-custom-line"></div>
+    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+    <div class="divider-custom-line"></div>
+</div>
+
 <p>
     <a asp-action="Create" class="btn btn-dark">Criar Novo Projecto</a>
 </p>
@@ -41,27 +48,28 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Projects) {
-        <tr>
-            <td>
-                <a asp-controller="SoftwareRequirements" asp-action="Index" asp-route-id=@item.ProjectId class="btn btn-dark">@Html.DisplayFor(modelItem => item.Name)</a>|
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BeginDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Client.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProjectId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProjectId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Projects)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="SoftwareRequirements" asp-action="Index" asp-route-id=@item.ProjectId class="btn btn-dark">@Html.DisplayFor(modelItem => item.Name)</a>|
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BeginDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProjectId" class="btn btn-secondary">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.ProjectId" class="btn btn-info">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@item.ProjectId" class="btn btn-danger">Apagar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
