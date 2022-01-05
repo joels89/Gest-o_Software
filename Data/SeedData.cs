@@ -16,7 +16,7 @@ namespace Gestao_Software.Data
 		private const string ADMIN_PASS = "Secret123$";
 
 		private const string ROLE_ADMINISTRATOR = "admin";
-		private const string ROLE_PRODUCT_MANAGER = "gestor_projeto";
+		private const string ROLE_PRODUCT_MANAGER = "gestor_projecto";
 		private const string ROLE_CLIENT = "cliente";
 		internal static void Populate(ProjectContext projectContext){
 #if TEST_PAGINATION_PROJECTS
