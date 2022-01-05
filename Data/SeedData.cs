@@ -66,8 +66,8 @@ namespace Gestao_Software.Data
 		}
 		internal static void PopulateUsers(UserManager<IdentityUser> userManager)
 		{
-			EnsureUserIsCreatedAsync(userManager, "john@ipg.pt", "Secret123$", ROLE_CLIENT).Wait();
-			EnsureUserIsCreatedAsync(userManager, "mary@ipg.pt", "Secret123$", ROLE_PRODUCT_MANAGER).Wait();
+			EnsureUserIsCreatedAsync(userManager, "cliente@ipg.pt", "Secret123$", ROLE_CLIENT).Wait();
+			EnsureUserIsCreatedAsync(userManager, "gestor@ipg.pt", "Secret123$", ROLE_PRODUCT_MANAGER).Wait();
 		}
 	internal static void CreateRoles(RoleManager<IdentityRole> roleManager)
 	{
