@@ -63,7 +63,7 @@ namespace Gestao_Software
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ProjectContext projectContext, UserManager<IdentityUser> userManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ProjectContext projectContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -92,6 +92,7 @@ namespace Gestao_Software
                 endpoints.MapRazorPages();
             });
 
+            SeedData.CreateRoles(roleManager);
             SeedData.CreateDefaultAdmin(userManager);
 
             if (env.IsDevelopment())
