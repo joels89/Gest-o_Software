@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Gestao_Software.Data;
 using Gestao_Software.Models;
 using Gestao_Software.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Gestão_Software.Controllers { 
 
@@ -93,6 +94,7 @@ namespace Gestão_Software.Controllers {
         }
 
         // GET: Projects/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["ClientId"] = new SelectList(_context.Client, "ClientId", "Name");
@@ -102,6 +104,7 @@ namespace Gestão_Software.Controllers {
         // POST: Projects/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProjectId,Name,BeginDate,EndDate,ClientId")] Project project)

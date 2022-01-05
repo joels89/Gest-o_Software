@@ -33,7 +33,8 @@ namespace Gestao_Software
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddIdentity<IdentityUser, IdentityRole>(
-                options => {
+                options =>
+                {
                     // Sign in
                     options.SignIn.RequireConfirmedAccount = false;
                     options.SignIn.RequireConfirmedPhoneNumber = false;
@@ -62,7 +63,7 @@ namespace Gestao_Software
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ProjectContext projectContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ProjectContext projectContext, UserManager<IdentityUser> userManager)
         {
             if (env.IsDevelopment())
             {
@@ -91,7 +92,13 @@ namespace Gestao_Software
                 endpoints.MapRazorPages();
             });
 
-            SeedData.Populate(projectContext);
+            SeedData.CreateDefaultAdmin(userManager);
+
+            if (env.IsDevelopment())
+            {
+                SeedData.PopulateUsers(userManager);
+                SeedData.Populate(projectContext);
+            }
         }
     }
 }
