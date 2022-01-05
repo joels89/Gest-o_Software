@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Gestao_Software.Data;
 using Gestao_Software.Models;
 using Gestao_Software.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Gestão_Software.Controllers { 
 
@@ -93,6 +94,7 @@ namespace Gestão_Software.Controllers {
         }
 
         // GET: Projects/Create
+        [Authorize(Roles = "gestor_projecto")]
         public IActionResult Create()
         {
             ViewData["ClientId"] = new SelectList(_context.Client, "ClientId", "Name");
@@ -102,6 +104,7 @@ namespace Gestão_Software.Controllers {
         // POST: Projects/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "gestor_projecto")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProjectId,Name,BeginDate,EndDate,ClientId")] Project project)
@@ -117,6 +120,7 @@ namespace Gestão_Software.Controllers {
         }
 
         // GET: Projects/Edit/5
+        [Authorize(Roles = "gestor_projecto")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -138,6 +142,7 @@ namespace Gestão_Software.Controllers {
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "gestor_projecto")]
         public async Task<IActionResult> Edit(int id, [Bind("ProjectId,Name,BeginDate,EndDate,ClientId")] Project project)
         {
             if (id != project.ProjectId)
@@ -170,6 +175,7 @@ namespace Gestão_Software.Controllers {
         }
 
         // GET: Projects/Delete/5
+        [Authorize(Roles = "gestor_projecto")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -191,6 +197,7 @@ namespace Gestão_Software.Controllers {
         // POST: Projects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "gestor_projecto")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var project = await _context.Project.FindAsync(id);
