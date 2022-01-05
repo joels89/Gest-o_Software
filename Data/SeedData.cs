@@ -43,15 +43,16 @@ namespace Gestao_Software.Data
 		}
 		internal static void CreateDefaultAdmin(UserManager<IdentityUser> userManager)
 		{
-			EnsureUserIsCreatedAsync(userManager, ADMIN_EMAIL, ADMIN_PASS).Wait();
+			EnsureUserIsCreatedAsync(userManager, ADMIN_EMAIL, ADMIN_PASS, ROLE_ADMINISTRATOR).Wait();
 		}
 
-		private static async Task EnsureUserIsCreatedAsync(UserManager<IdentityUser> userManager, string email, string password)
+		private static async Task EnsureUserIsCreatedAsync(UserManager<IdentityUser> userManager, string email, string password, string role)
 		{
 			var user = await userManager.FindByNameAsync(email);
-			if (user != null) return;
+			if (user == null)
+			{
 
-			user = new IdentityUser
+				user = new IdentityUser
 			{
 				UserName = email,
 				Email = email
@@ -60,9 +61,13 @@ namespace Gestao_Software.Data
 			await userManager.CreateAsync(user, password);
 		}
 
+			if (await userManager.IsInRoleAsync(user, role)) return;
+			await userManager.AddToRoleAsync(user, role);
+		}
 		internal static void PopulateUsers(UserManager<IdentityUser> userManager)
 		{
-
+			EnsureUserIsCreatedAsync(userManager, "john@ipg.pt", "Secret123$", ROLE_CLIENT).Wait();
+			EnsureUserIsCreatedAsync(userManager, "mary@ipg.pt", "Secret123$", ROLE_PRODUCT_MANAGER).Wait();
 		}
 	internal static void CreateRoles(RoleManager<IdentityRole> roleManager)
 	{
