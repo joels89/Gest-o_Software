@@ -98,13 +98,7 @@ namespace Gestao_Software
 
             if (env.IsDevelopment())
             {
-                using (var serviceScope = app.ApplicationServices.CreateScope())
-                {
-                    var projectContext = serviceScope.ServiceProvider.GetService<ProjectContext>();
-                    SeedData.Populate(projectContext);
-                }
-
-                SeedData.PopulateUsers(userManager);
+                SeedData.Populate(projectContext);
             }
         }
     }
