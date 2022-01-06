@@ -1,4 +1,6 @@
-﻿using Gestao_Software.Models;
+﻿#define POPULATE_PROJECTS
+
+using Gestao_Software.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,46 +18,50 @@ namespace Gestao_Software.Data
 		private const string ROLE_ADMINISTRATOR = "admin";
 		private const string ROLE_PROJECT_MANAGER = "gestor_projecto";
 		private const string ROLE_CLIENT = "cliente";
+
 		internal static void Populate(ProjectContext projectContext)
 		{
-			PopulateProjectos(projectContext);
-			PopulateClientes(projectContext);
-		}
-		private static void PopulateProjectos(ProjectContext projectContext)
-		{
-			if (projectContext.Project.Any())
-			{
-				return;
-			}
-			projectContext.Project.Add(
-				new Project
-				{
-					Name = "Projecto Bosch",
-					BeginDate = new DateTime(2008, 5, 1, 8, 30, 52),
-					EndDate = new DateTime(2009, 5, 1, 8, 30, 52),
-					ClientId = 1,
-				});
 
-		}
-			private static void PopulateClientes(ProjectContext projectContext)
-		{
+#if POPULATE_PROJECTS
+			Client client = projectContext.Client.FirstOrDefault();
+
+			if (client == null)
+			{
+				client = new Client { Name = "Anonymous" };
+				projectContext.Add(client);
+			}
+
 			if (projectContext.Client.Any())
 			{
 				return;
 			}
 
 			projectContext.Client.Add(
-				new Client
-				{ 
-					ClientId = 1,
-					Name = "Bosch",
-
+                new Client
+				{
+					Name= "Bosch",
 				}
-				);
+			);
+			projectContext.SaveChanges();
 
+			if (projectContext.Project.Any())
+			{
+				return;
+			}
 
+			projectContext.Project.Add(
+					new Project
+					{
+						Name = "Project Bosch",
+						BeginDate = new DateTime(2008, 5, 1, 8, 30, 52),
+						EndDate = new DateTime(2009, 5, 1, 8, 30, 52),
+						ClientId = 1
+					}
+				);		
+			projectContext.SaveChanges();
+#endif
 		}
-		internal static void CreateDefaultAdmin(UserManager<IdentityUser> userManager)
+			internal static void CreateDefaultAdmin(UserManager<IdentityUser> userManager)
 		{
 			EnsureUserIsCreatedAsync(userManager, ADMIN_EMAIL, ADMIN_PASS, ROLE_ADMINISTRATOR).Wait();
 		}
