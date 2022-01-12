@@ -39,7 +39,10 @@ namespace Gestao_Software.Data
 			projectContext.Client.Add(
                 new Client
 				{
-					Nome= "Bosch",
+					Nome= "Bosch Braga",
+					Endereco= "Rua Max Grundig, 35, Lomar 4705 - 820 Braga Portugal",
+					Email= "bosch.braga@pt.bosch.com",
+					Telefone= "808 100 202",
 				}
 			);
 			projectContext.SaveChanges();
