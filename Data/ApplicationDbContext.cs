@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Gestao_Software.Models;
 
 namespace Gestao_Software.Data
 {
@@ -12,5 +13,6 @@ namespace Gestao_Software.Data
             : base(options)
         {
         }
+        public DbSet<Gestao_Software.Models.Client> Client { get; set; }
     }
 }

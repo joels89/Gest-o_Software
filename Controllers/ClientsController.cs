@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Gestao_Software.Data;
 using Gestao_Software.Models;
 
-namespace Gestao_Software.Controllers
+namespace Gestão_Software.Controllers
 {
     public class ClientsController : Controller
     {
-        private readonly ProjectContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public ClientsController(ProjectContext context)
+        public ClientsController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -54,7 +54,7 @@ namespace Gestao_Software.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClientId,Name")] Client client)
+        public async Task<IActionResult> Create([Bind("ClientId,Nome,Endereco,Email,Telefone")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Gestao_Software.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClientId,Name")] Client client)
+        public async Task<IActionResult> Edit(int id, [Bind("ClientId,Nome,Endereco,Email,Telefone")] Client client)
         {
             if (id != client.ClientId)
             {

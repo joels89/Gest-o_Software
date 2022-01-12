@@ -27,7 +27,7 @@ namespace Gestao_Software.Data
 
 			if (client == null)
 			{
-				client = new Client { Name = "Anonymous" };
+				client = new Client { Nome = "Anonymous" };
 				projectContext.Add(client);
 			}
 
@@ -39,7 +39,7 @@ namespace Gestao_Software.Data
 			projectContext.Client.Add(
                 new Client
 				{
-					Name= "Bosch",
+					Nome= "Bosch",
 				}
 			);
 			projectContext.SaveChanges();
