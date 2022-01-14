@@ -27,7 +27,7 @@ namespace Gestao_Software.Data
 
 			if (client == null)
 			{
-				client = new Client { Name = "Anonymous" };
+				client = new Client { Nome = "Anonimo", Endereco= "Nao introduzido", Email="Nao introduzido", Telefone="Nao introduzido"};
 				projectContext.Add(client);
 			}
 
@@ -39,7 +39,21 @@ namespace Gestao_Software.Data
 			projectContext.Client.Add(
                 new Client
 				{
-					Name= "Bosch",
+					Nome= "Bosch Braga",
+					Endereco= "Rua Max Grundig, 35, Lomar 4705 - 820 Braga Portugal",
+					Email= "bosch.braga@pt.bosch.com",
+					Telefone= "808 100 202",
+				}
+			);
+			projectContext.SaveChanges();
+
+			projectContext.Client.Add(
+				new Client
+				{
+					Nome = "Capgemini Gaia",
+					Endereco = "R. de Serpa Pinto 44, 4400-012 Vila Nova de Gaia",
+					Email = "capgemini_gaia@capgemini.com",
+					Telefone = "210 331 600",
 				}
 			);
 			projectContext.SaveChanges();
@@ -58,6 +72,17 @@ namespace Gestao_Software.Data
 						ClientId = 1
 					}
 				);		
+			projectContext.SaveChanges();
+
+			projectContext.Project.Add(
+				new Project
+				{
+					Name = "Project Capgemini",
+					BeginDate = new DateTime(2009, 3, 1, 8, 30, 52),
+					EndDate = new DateTime(2009, 5, 1, 8, 30, 52),
+					ClientId = 1
+				}
+			);
 			projectContext.SaveChanges();
 #endif
 		}
