@@ -98,6 +98,7 @@ namespace Gestao_Software
 
             if (env.IsDevelopment())
             {
+                SeedData.PopulateUsers(userManager);
                 SeedData.Populate(projectContext);
             }
         }
