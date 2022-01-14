@@ -27,7 +27,7 @@ namespace Gestao_Software.Data
 
 			if (client == null)
 			{
-				client = new Client { Nome = "Anonymous" };
+				client = new Client { Nome = "Anonimo", Endereco= "Nao introduzido", Email="Nao introduzido", Telefone="Nao introduzido"};
 				projectContext.Add(client);
 			}
 
