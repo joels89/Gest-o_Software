@@ -47,6 +47,17 @@ namespace Gestao_Software.Data
 			);
 			projectContext.SaveChanges();
 
+			projectContext.Client.Add(
+				new Client
+				{
+					Nome = "Capgemini Gaia",
+					Endereco = "R. de Serpa Pinto 44, 4400-012 Vila Nova de Gaia",
+					Email = "capgemini_gaia@capgemini.com",
+					Telefone = "210 331 600",
+				}
+			);
+			projectContext.SaveChanges();
+
 			if (projectContext.Project.Any())
 			{
 				return;
@@ -61,6 +72,17 @@ namespace Gestao_Software.Data
 						ClientId = 1
 					}
 				);		
+			projectContext.SaveChanges();
+
+			projectContext.Project.Add(
+				new Project
+				{
+					Name = "Project Capgemini",
+					BeginDate = new DateTime(2009, 3, 1, 8, 30, 52),
+					EndDate = new DateTime(2009, 5, 1, 8, 30, 52),
+					ClientId = 1
+				}
+			);
 			projectContext.SaveChanges();
 #endif
 		}
