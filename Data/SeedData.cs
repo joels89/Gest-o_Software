@@ -80,7 +80,7 @@ namespace Gestao_Software.Data
 					Name = "Project Capgemini",
 					BeginDate = new DateTime(2009, 3, 1, 8, 30, 52),
 					EndDate = new DateTime(2009, 5, 1, 8, 30, 52),
-					ClientId = 1
+					ClientId = 2
 				}
 			);
 			projectContext.SaveChanges();
@@ -129,3 +129,5 @@ namespace Gestao_Software.Data
 	}
 }
 
+// Drop-Database -Context ProjectContext
+//Update - Database - Context ProjectContext
