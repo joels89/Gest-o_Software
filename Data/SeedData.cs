@@ -23,14 +23,6 @@ namespace Gestao_Software.Data
 		{
 
 #if POPULATE_PROJECTS
-			Client client = projectContext.Client.FirstOrDefault();
-
-			if (client == null)
-			{
-				client = new Client { Nome = "Anonimo", Endereco= "Nao introduzido", Email="Nao introduzido", Telefone="Nao introduzido"};
-				projectContext.Add(client);
-			}
-
 			if (projectContext.Client.Any())
 			{
 				return;
@@ -66,7 +58,7 @@ namespace Gestao_Software.Data
 			projectContext.Project.Add(
 					new Project
 					{
-						Name = "Project Bosch",
+						Name = "Projeto Bosch",
 						BeginDate = new DateTime(2008, 5, 1, 8, 30, 52),
 						EndDate = new DateTime(2009, 5, 1, 8, 30, 52),
 						ClientId = 1
@@ -77,10 +69,10 @@ namespace Gestao_Software.Data
 			projectContext.Project.Add(
 				new Project
 				{
-					Name = "Project Capgemini",
+					Name = "Projeto Capgemini",
 					BeginDate = new DateTime(2009, 3, 1, 8, 30, 52),
 					EndDate = new DateTime(2009, 5, 1, 8, 30, 52),
-					ClientId = 1
+					ClientId = 2
 				}
 			);
 			projectContext.SaveChanges();
@@ -129,3 +121,5 @@ namespace Gestao_Software.Data
 	}
 }
 
+// Drop-Database -Context ProjectContext
+//Update - Database - Context ProjectContext
