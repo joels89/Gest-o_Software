@@ -43,18 +43,18 @@ namespace Gestão_Software.Controllers
             return View(client);
         }
 
-        // GET: Clients/Create
-        public IActionResult Create()
+        // GET: Clients/Registo
+        public IActionResult Registo()
         {
             return View();
         }
 
-        // POST: Clients/Create
+        // POST: Clients/Registo
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClientId,Nome,Endereco,Email,Telefone")] Client client)
+        public async Task<IActionResult> Registo([Bind("ClientId,Nome,Endereco,Email,Telefone")] Client client)
         {
             if (ModelState.IsValid)
             {
