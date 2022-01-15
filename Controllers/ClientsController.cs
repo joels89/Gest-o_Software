@@ -9,9 +9,9 @@ using Gestao_Software.Data;
 using Gestao_Software.Models;
 using Gestao_Software.ViewModels;
 using Microsoft.AspNetCore.Identity;
-using Gestão_Software.ViewModels;
+using Gestao_Software.ViewModels;
 
-namespace Gestão_Software.Controllers
+namespace Gestao_Software.Controllers
 {
     public class ClientsController : Controller
     {

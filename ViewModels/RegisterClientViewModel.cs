@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Gestao_Software.Models;
 
-namespace Gestão_Software.ViewModels
+namespace Gestao_Software.ViewModels
 {
     public class RegisterClientViewModel
     {
