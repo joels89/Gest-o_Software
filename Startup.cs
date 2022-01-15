@@ -55,12 +55,14 @@ namespace Gestao_Software
                     // Lockout
                     options.Lockout.AllowedForNewUsers = true;
                 })
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultUI();
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+                //.AddDefaultUI();
             services.AddControllersWithViews();
 
             services.AddDbContext<ProjectContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("ProjectContext")));
+
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
