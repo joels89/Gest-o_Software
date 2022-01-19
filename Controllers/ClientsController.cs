@@ -63,12 +63,6 @@ namespace Gestao_Software.Controllers
             });
         }
 
-        public async Task<IActionResult> ClientProjectList(int id)
-        {
-            var projectContext = _context.Project.Where(s => s.ClientId == id);
-            return View(await projectContext.ToListAsync());
-        }
-
         // GET: Clients/Details/5
         public async Task<IActionResult> Details(int? id)
         {
