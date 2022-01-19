@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Gestao_Software.Models.Client>
+﻿@model ClientListViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -6,48 +6,116 @@
 
 <h1>Lista de Clientes</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="input-group">
+    <div class="form-outline mb-4">
+        <h5 class="card-title">Cliente</h5>
+        <form asp-action="Index" method="get">
+            <input name="name" class="form-control-sm" value="@Model.NameSearched" />
+            <button type="button" class="btn btn-primary">
+                <i class="fas fa-search"></i>
+            </button>
+            @if (User.IsInRole("gestor_projecto"))
+            {
+                <a asp-action="Create" class="btn btn-dark">Criar Novo Projecto</a>
+            }
+        </form>
+    </div>
+</div>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                <h5>Nome do Cliente</h5>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Endereco)
+                <h5>Endereço</h5>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                <h5>Email</h5>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telefone)
+                <h5>Telefone</h5>
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Endereco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ClientId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ClientId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ClientId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Clients)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ClientId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ClientId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ClientId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<nav class="mt-3">
+    <ul class="pagination">
+        @{
+            if (Model.PagingInfo.CurrentPage == 1)
+            {
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Início</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="Index" asp-route-page="1">Início</a>
+                </li>
+            }
+
+            int firstPage = Model.PagingInfo.CurrentPage - PagingInfo.NUMBER_PAGES_SHOW_BEFORE_AFTER;
+            if (firstPage < 1) firstPage = 1;
+
+            int lastPage = Model.PagingInfo.CurrentPage + PagingInfo.NUMBER_PAGES_SHOW_BEFORE_AFTER;
+            if (lastPage > Model.PagingInfo.TotalPages) lastPage = Model.PagingInfo.TotalPages;
+
+            for (int p = firstPage; p <= lastPage; p++)
+            {
+                if (p == Model.PagingInfo.CurrentPage)
+                {
+                    <li class="page-item active">
+                        <a class="page-link" href="#">@p <span class="sr-only">(current)</span></a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-action="Index" asp-route-page="@p">@p</a>
+                    </li>
+                }
+            }
+
+            if (Model.PagingInfo.CurrentPage == Model.PagingInfo.TotalPages)
+            {
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Fim</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="Index" asp-route-page="@Model.PagingInfo.TotalPages">Fim</a>
+                </li>
+            }
+        }
+    </ul>
+</nav>

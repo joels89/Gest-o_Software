@@ -10,7 +10,6 @@ using Gestao_Software.Models;
 using Gestao_Software.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Gestao_Software.ViewModels;
-using Gestão_Software.ViewModels;
 
 namespace Gestao_Software.Controllers
 {
@@ -41,8 +40,16 @@ namespace Gestao_Software.Controllers
                 TotalItems = clientSearch.Count()
             };
 
+            if (pagingInfo.CurrentPage > pagingInfo.TotalPages)
+            {
+                pagingInfo.CurrentPage = pagingInfo.TotalPages;
+            }
+
+            if (pagingInfo.CurrentPage < 1)
+            {
+                pagingInfo.CurrentPage = 1;
+            }
             var client = await clientSearch
-                .Include(b => b.Nome)
                 .OrderBy(b => b.Nome)
                 .Skip((pagingInfo.CurrentPage - 1) * pagingInfo.PageSize)
                 .Take(pagingInfo.PageSize)
@@ -54,6 +61,12 @@ namespace Gestao_Software.Controllers
                 PagingInfo = pagingInfo,
                 NameSearched = name
             });
+        }
+
+        public async Task<IActionResult> ClientProjectList(int id)
+        {
+            var projectContext = _context.Project.Where(s => s.ClientId == id);
+            return View(await projectContext.ToListAsync());
         }
 
         // GET: Clients/Details/5
