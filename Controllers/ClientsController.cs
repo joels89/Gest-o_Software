@@ -10,6 +10,7 @@ using Gestao_Software.Models;
 using Gestao_Software.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Gestao_Software.ViewModels;
+using Gestão_Software.ViewModels;
 
 namespace Gestao_Software.Controllers
 {
@@ -30,9 +31,29 @@ namespace Gestao_Software.Controllers
         }
 
         // GET: Clients
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string name, int page = 1)
         {
-            return View(await _context.Client.ToListAsync());
+            var clientSearch = _context.Client
+                .Where(b => name == null ||  b.Nome.Contains(name));
+
+            var pagingInfo = new PagingInfo {
+                CurrentPage = page,
+                TotalItems = clientSearch.Count()
+            };
+
+            var client = await clientSearch
+                .Include(b => b.Nome)
+                .OrderBy(b => b.Nome)
+                .Skip((pagingInfo.CurrentPage - 1) * pagingInfo.PageSize)
+                .Take(pagingInfo.PageSize)
+                .ToListAsync();
+
+            return View(
+            new ClientListViewModel{
+                Clients = client,
+                PagingInfo = pagingInfo,
+                NameSearched = name
+            });
         }
 
         // GET: Clients/Details/5
