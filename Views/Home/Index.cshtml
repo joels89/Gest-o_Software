@@ -8,52 +8,50 @@
     }
 </style>
 
-    <div class="rowHome" >
-    <h3 class="display-4" > Nunca foi tão facil gerir os seus projectos!</h3 >
-    </div >
+<h3 class="display-4"> Nunca foi tão facil gerir os seus projectos!</h3>
+<br>
 
-    <!--Divider-->
-    <div class="divider-custom divider-light">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-        <div class="divider-custom-line"></div>
+<div class="row row-cols-1 row-cols-sm-3 g-4 d-flex">
+    <div class="col">
+        <div class="card h-100">
+            <img src="~/img/projs.png" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title"> Gestão Projectos</h5>
+                <p class="card-text">Esta área é dedicada<br>aos projetos desenvolvidos<br>ou em desenvolvimento.</p>
+            </div>
+            <div class="card-footer">
+                @if (User.IsInRole("gestor_projecto"))
+                {
+                    <a asp-controller="Projects" asp-action="Index" class="btn btn-dark"> Gerir projectos</a>
+                }
+                </div>
+        </div>
     </div>
-
-    <div class="row row-cols-1 row-cols-md-3 g-4 d-flex" >
-    <div class="col" >
-    <div class="card h-100" >
-    <img src="~/img/projs.png" class="card-img-top" alt="" >
-    <div class="card-body" >
-    <h5 class="card-title" > Gestão Projectos</h5 >
-    <p class="card-text" > Aqui é possivel gerir os seus projectos. <br/> Criar, editar ou apagar projectos.</p >
-    </div >
-    <div class="card-footer" >
-    <a asp-controller="Projects" asp-action="Index" class="btn btn-dark" > Gerir projectos</a >
-    </div >
-    </div >
-    </div >
-    <div class="col" >
-    <div class="card h-100" >
-    <img src="~/img/clients.png" class="card-img-top" alt="" >
-    <div class="card-body" >
-    <h5 class="card-title" > Gestão Clientes</h5 >
-    <p class="card-text" > Aqui é possivel gerir clientes.</p >
-    </div >
-    <div class="card-footer" >
-    <a asp-controller="Clients" asp-action="Index" class="btn btn-dark" > Gerir clientes</a >
-    </div >
-    </div >
-    </div >
-    <div class="col" >
-    <div class="card h-100" >
-    <img src="~/img/soft.png" class="card-img-top" alt="" >
-    <div class="card-body" >
-    <h5 class="card-title" > Gestão SoftwareRequirements</h5 >
-    <p class="card-text" > Aqui é possivel gerir SoftwareRequirements.</p >
-    </div >
-    <div class="card-footer" >
-    <a asp-controller="SoftwareRequirements" asp-action="Index" class="btn btn-dark" > SoftwareRequirements</a >
-    </div >
-    </div >
-    </div >
-    </div >
+    <div class="col">
+        <div class="card h-100">
+            <img src="~/img/clients.png" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title"> Gestão Clientes</h5>
+                <p class="card-text">Esta área é dedicada<br>aos clientes<br>que confiam em nós<br>para a gestão dos seus projetos.</p>
+            </div>
+            <div class="card-footer">
+                @if (User.IsInRole("gestor_projecto"))
+                {
+                    <a asp-controller="Clients" asp-action="Index" class="btn btn-dark"> Gerir clientes</a>
+                }
+                </div>
+        </div>
+            </div>
+    <div class="col">
+        <div class="card h-100">
+            <img src="~/img/soft.png" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title"> Gestão SoftwareRequirements</h5>
+                <p class="card-text"> Aqui é possivel gerir SoftwareRequirements.</p>
+            </div>
+            <div class="card-footer">
+                <a asp-controller="SoftwareRequirements" asp-action="Index" class="btn btn-dark"> SoftwareRequirements</a>
+            </div>
+        </div>
+    </div>
+</div>
