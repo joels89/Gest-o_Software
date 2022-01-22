@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Gestão_Software.Data.appmigrations
+namespace Gestao_Software.Data.appmigrations
 {
     public partial class Clientes : Migration
     {

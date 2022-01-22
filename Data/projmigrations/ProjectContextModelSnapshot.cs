@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Gestão_Software.Data.projmigrations
+namespace Gestao_Software.Data.projmigrations
 {
     [DbContext(typeof(ProjectContext))]
     partial class ProjectContextModelSnapshot : ModelSnapshot

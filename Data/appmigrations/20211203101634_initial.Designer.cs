@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Gestão_Software.Data.appmigrations
+namespace Gestao_Software.Data.appmigrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20211203101634_initial")]

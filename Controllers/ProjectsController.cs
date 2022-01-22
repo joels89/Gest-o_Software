@@ -10,7 +10,7 @@ using Gestao_Software.Models;
 using Gestao_Software.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Gestão_Software.Controllers { 
+namespace Gestao_Software.Controllers { 
 
     public class ProjectsController : Controller
     {

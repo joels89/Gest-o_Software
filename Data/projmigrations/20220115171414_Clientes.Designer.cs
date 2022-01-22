@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Gestão_Software.Data.projmigrations
+namespace Gestao_Software.Data.projmigrations
 {
     [DbContext(typeof(ProjectContext))]
     [Migration("20220115171414_Clientes")]
