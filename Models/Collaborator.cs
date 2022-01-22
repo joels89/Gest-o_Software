@@ -1,6 +1,4 @@
-﻿using Gestao_Software.Models;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Gestao_Software.Models
 {
-    public class Collaborator : Controller
+    public class Collaborator
     {
+        public int CollaboratorId { get; set; }
         [Required]
         [StringLength(100)]
         public string Nome { get; set; }
@@ -22,5 +21,7 @@ namespace Gestao_Software.Models
 
         public int ProjectId { get; set; }
         public Project Project { get; set; }
+
+        public ICollection<Project> Projects { get; set; }
     }
 }
