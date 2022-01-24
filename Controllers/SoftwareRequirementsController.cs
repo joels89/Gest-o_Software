@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Gestao_Software.Data;
 using Gestao_Software.Models;
 
-namespace Gestão_Software.Controllers
+namespace Gestao_Software.Controllers
 {
     public class SoftwareRequirementsController : Controller
     {

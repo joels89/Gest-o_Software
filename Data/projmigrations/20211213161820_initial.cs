@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Gestão_Software.Data.projmigrations
+namespace Gestao_Software.Data.projmigrations
 {
     public partial class initial : Migration
     {

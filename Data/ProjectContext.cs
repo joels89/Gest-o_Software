@@ -19,5 +19,7 @@ namespace Gestao_Software.Data
         public DbSet<Gestao_Software.Models.SoftwareRequirement> SoftwareRequirement { get; set; }
 
         public DbSet<Gestao_Software.Models.Client> Client { get; set; }
+
+        public DbSet<Gestao_Software.Models.Collaborator> Collaborator { get; set; }
     }
 }
