@@ -25,6 +25,6 @@ namespace Gestao_Software.Models
       
         public Client Client { get; set; }
 
-        public ICollection<SoftwareRequirement> SoftwareRequirements { get; set; }
+        public ICollection<Collaborator> Collaborators { get; set; }
     }
 }
