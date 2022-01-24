@@ -22,7 +22,7 @@ namespace Gestão_Software.Controllers
         // GET: Collaborators
         public async Task<IActionResult> Index(int id)
         {
-            var collaboratorContext = _context.Collaborator.Include(c => c.ProjectId == id);
+            var collaboratorContext = _context.Collaborator.Where(c => c.ProjectId == id);
             return View(await collaboratorContext.ToListAsync());
         }
 
