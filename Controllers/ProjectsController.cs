@@ -44,7 +44,7 @@ namespace Gestao_Software.Controllers {
             }
 
             var project = await projectSearch
-                .Include(b => b.Client)
+                //.Include(b => b.Client)
                 .OrderBy(b => b.Name)
                 .Skip((pagingInfo.CurrentPage - 1) * pagingInfo.PageSize)
                 .Take(pagingInfo.PageSize)

@@ -9,6 +9,7 @@ namespace Gestao_Software.Models
     public class Collaborator
     {
         public int CollaboratorId { get; set; }
+
         [Required]
         [StringLength(100)]
         public string Nome { get; set; }

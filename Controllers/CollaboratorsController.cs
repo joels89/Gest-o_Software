@@ -22,8 +22,8 @@ namespace Gestão_Software.Controllers
         // GET: Collaborators
         public async Task<IActionResult> Index(int id)
         {
-            var projectContext = _context.Collaborator.Include(c => c.ProjectId == id);
-            return View(await projectContext.ToListAsync());
+            var collaboratorContext = _context.Collaborator.Include(c => c.ProjectId == id);
+            return View(await collaboratorContext.ToListAsync());
         }
 
         // GET: Collaborators/Details/5
