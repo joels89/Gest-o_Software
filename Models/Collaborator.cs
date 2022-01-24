@@ -19,9 +19,8 @@ namespace Gestao_Software.Models
 
         public byte[] Photo { get; set; }
 
-        public int ProjectId { get; set; }
-        public Project Project { get; set; }
+        public int ProjectId { get; internal set; }
 
-        public ICollection<Project> Projects { get; set; }
+        public Project Project { get; set; }
     }
 }
