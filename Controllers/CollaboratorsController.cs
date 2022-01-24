@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gestao_Software.Data;
 using Gestao_Software.Models;
-using Microsoft.AspNetCore.Http;
 
 namespace Gestão_Software.Controllers
 {
@@ -21,10 +20,10 @@ namespace Gestão_Software.Controllers
         }
 
         // GET: Collaborators
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            var projectContext = _context.Collaborator.Include(c => c.Project);
-            return View(await projectContext.ToListAsync());
+            var collaboratorContext = _context.Collaborator.Where(c => c.ProjectId == id);
+            return View(await collaboratorContext.ToListAsync());
         }
 
         // GET: Collaborators/Details/5
@@ -58,7 +57,7 @@ namespace Gestão_Software.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CollaboratorId,Nome,Funcao,Photo,ProjectId")] Collaborator collaborator, IFormFile photoFile)
+        public async Task<IActionResult> Create([Bind("CollaboratorId,Nome,Funcao,Photo,ProjectId")] Collaborator collaborator)
         {
             if (ModelState.IsValid)
             {

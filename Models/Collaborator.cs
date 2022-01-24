@@ -9,6 +9,7 @@ namespace Gestao_Software.Models
     public class Collaborator
     {
         public int CollaboratorId { get; set; }
+
         [Required]
         [StringLength(100)]
         public string Nome { get; set; }
@@ -19,9 +20,8 @@ namespace Gestao_Software.Models
 
         public byte[] Photo { get; set; }
 
-        public int ProjectId { get; set; }
-        public Project Project { get; set; }
+        public int ProjectId { get; internal set; }
 
-        public ICollection<Project> Projects { get; set; }
+        public Project Project { get; set; }
     }
 }
