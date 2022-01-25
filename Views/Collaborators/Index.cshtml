@@ -4,50 +4,54 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Colaboradores</h1>
+<hr>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="input-group">
+    <div class="form-outline mb-4">
+            @if (User.IsInRole("gestor_projecto"))
+            {
+                <a asp-action="Create" class="btn btn-dark">Adicionar Colaborador</a>
+            }
+    </div>
+</div>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                <h5>Colaborador</h5>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Funcao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Photo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Project)
+                <h5>Função</h5>
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Funcao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Photo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Project.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CollaboratorId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CollaboratorId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CollaboratorId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Funcao)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<!--Divider-->
+<div class="divider-custom divider-light">
+    <div class="divider-custom-line"></div>
+    <div class="divider-custom-line"></div>
+    <div class="divider-custom-line"></div>
+</div>
+
+<div>
+    <a asp-controller="Projects" asp-action="Index" class="btn btn-secondary btn-sm">&laquo; Voltar &raquo;</a>
+</div>
+
+

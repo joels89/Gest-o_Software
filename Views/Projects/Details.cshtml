@@ -3,6 +3,36 @@
 @{
     ViewData["Title"] = "Details";
 }
+<style>
+    dd {
+        margin: 0;
+    }
+
+        dd::after {
+            content: '\A';
+            white-space: pre-line;
+        }
+
+        dd:last-of-type::after {
+            content: '';
+        }
+
+    dd, dt {
+        display: inline;
+    }
+
+    dd, dt, .address {
+        vertical-align: middle;
+    }
+
+    dt {
+        font-weight: bolder;
+    }
+
+        dt::after {
+            content: ': ';
+        }
+</style>
 
 <h1>Detalhes</h1>
 
@@ -23,7 +53,7 @@
         @Html.DisplayFor(model => model.BeginDate)
     </dd>
     <dt class="col-2">
-        Data Final
+        Data
     </dt>
     <dd class="col-xl-2">
         @Html.DisplayFor(model => model.EndDate)
@@ -40,4 +70,11 @@
 
 <div>
     <a asp-action="Index" class="btn btn-secondary btn-sm">&laquo; Voltar &raquo;</a>
+</div>
+
+<!--Divider-->
+<div class="divider-custom divider-light">
+    <div class="divider-custom-line"></div>
+    <div class="divider-custom-line"></div>
+    <div class="divider-custom-line"></div>
 </div>

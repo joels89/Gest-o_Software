@@ -4,10 +4,40 @@
     ViewData["Title"] = "Delete";
 }
 
+<style>
+    dd {
+        margin: 0;
+    }
+
+        dd::after {
+            content: '\A';
+            white-space: pre-line;
+        }
+
+        dd:last-of-type::after {
+            content: '';
+        }
+
+    dd, dt {
+        display: inline;
+    }
+
+    dd, dt, .address {
+        vertical-align: middle;
+    }
+
+    dt {
+        font-weight: bolder;
+    }
+
+        dt::after {
+            content: ': ';
+        }
+</style>
+
 <h1>Apagar</h1>
 
 <h5>Projecto</h5>
-
 
 <br />
 

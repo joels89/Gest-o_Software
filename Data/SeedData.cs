@@ -76,6 +76,36 @@ namespace Gestao_Software.Data
 				}
 			);
 			projectContext.SaveChanges();
+
+			projectContext.Collaborator.Add(
+				new Collaborator
+				{
+					Nome = "João Saraiva",
+					Funcao = "Programador",
+					ProjectId = 2
+				}
+			);
+			projectContext.SaveChanges();
+
+			projectContext.Collaborator.Add(
+				new Collaborator
+				{
+					Nome = "José Nunes",
+					Funcao = "Gestor",
+					ProjectId = 1
+				}
+			);
+			projectContext.SaveChanges();
+
+			projectContext.Collaborator.Add(
+				new Collaborator
+				{
+					Nome = "José Nunes",
+					Funcao = "Gestor",
+					ProjectId = 2
+				}
+			);
+			projectContext.SaveChanges();
 #endif
 		}
 			internal static void CreateDefaultAdmin(UserManager<IdentityUser> userManager)

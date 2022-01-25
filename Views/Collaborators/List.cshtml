@@ -1,0 +1,50 @@
+﻿@model CollaboratorListViewModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Colaboradores</h1>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h5>Colaborador</h5>
+            </th>
+            <th>
+                <h5>Função</h5>
+            </th>
+            <th>
+                <h5>Projeto</h5>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Collaborators)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Funcao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.Name)
+                </td>
+                <td>
+                    @if (User.IsInRole("gestor_projecto"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.CollaboratorId" class="btn btn-secondary">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@item.CollaboratorId" class="btn btn-danger">Apagar</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr>
+<hr>

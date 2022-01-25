@@ -97,7 +97,7 @@ namespace Gestao_Software.Controllers {
         [Authorize(Roles = "gestor_projecto")]
         public IActionResult Create()
         {
-            ViewData["ClientId"] = new SelectList(_context.Client, "ClientId", "Name");
+            ViewData["ClientId"] = new SelectList(_context.Client, "ClientId", "Nome");
             return View();
         }
 
@@ -115,7 +115,7 @@ namespace Gestao_Software.Controllers {
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientId"] = new SelectList(_context.Client, "ClientId", "Name", project.ClientId);
+            ViewData["ClientId"] = new SelectList(_context.Client, "ClientId", "Nome", project.ClientId);
             return View(project);
         }
 
@@ -133,7 +133,7 @@ namespace Gestao_Software.Controllers {
             {
                 return NotFound();
             }
-            ViewData["ClientId"] = new SelectList(_context.Client, "ClientId", "Name", project.ClientId);
+            ViewData["ClientId"] = new SelectList(_context.Client, "ClientId", "Nome", project.ClientId);
             return View(project);
         }
 
