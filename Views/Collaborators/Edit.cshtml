@@ -4,12 +4,12 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
-<h4>Collaborator</h4>
+<h4>Colaborador</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CollaboratorId" />
@@ -18,30 +18,30 @@
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
                 <label asp-for="Funcao" class="control-label"></label>
                 <input asp-for="Funcao" class="form-control" />
                 <span asp-validation-for="Funcao" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
-                <label asp-for="Photo" class="control-label"></label>
-                <input asp-for="Photo" class="form-control" />
-                <span asp-validation-for="Photo" class="text-danger"></span>
+                <input type="submit" value="Editar" class="btn btn-success" />
             </div>
-            <div class="form-group">
-                <label asp-for="ProjectId" class="control-label"></label>
-                <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectId"></select>
-                <span asp-validation-for="ProjectId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+            <br>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="Collaborators" asp-action="List" class="btn btn-secondary btn-sm">&laquo; Voltar &raquo;</a>
+</div>
+
+<!--Divider-->
+<div class="divider-custom divider-light">
+    <div class="divider-custom-line"></div>
+    <div class="divider-custom-line"></div>
+    <div class="divider-custom-line"></div>
 </div>
 
 @section Scripts {
