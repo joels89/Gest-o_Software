@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista de Colaboradores</h1>
+<h1>Colaboradores</h1>
 
 
 <table class="table">
@@ -14,7 +14,7 @@
                 <h5>Colaborador</h5>
             </th>
             <th>
-                <h5>Projeto</h5>
+                <h5>Função</h5>
             </th>
             <th></th>
         </tr>
@@ -26,13 +26,13 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Project.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CollaboratorId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CollaboratorId">Details</a> |
+                @Html.DisplayFor(modelItem => item.Funcao)
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<div>
+    <a asp-controller="Projects" asp-action="Index" class="btn btn-secondary btn-sm">&laquo; Voltar &raquo;</a>
+</div>
