@@ -9,10 +9,10 @@
 
 <div class="input-group">
     <div class="form-outline mb-4">
-        @if (User.IsInRole("gestor_projecto"))
-        {
-            <a asp-action="Create" class="btn btn-dark">Adicionar Colaborador</a>
-        }
+            @if (User.IsInRole("gestor_projecto"))
+            {
+                <a asp-action="Create" class="btn btn-dark">Adicionar Colaborador</a>
+            }
     </div>
 </div>
 
