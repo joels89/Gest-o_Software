@@ -9,7 +9,6 @@ using Gestao_Software.Data;
 using Gestao_Software.Models;
 using Gestao_Software.ViewModels;
 using Microsoft.AspNetCore.Identity;
-using Gestao_Software.ViewModels;
 
 namespace Gestao_Software.Controllers
 {
@@ -61,6 +60,28 @@ namespace Gestao_Software.Controllers
                 PagingInfo = pagingInfo,
                 NameSearched = name
             });
+        }
+
+        // GET: Clients/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Clients/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("ClientId,Nome,Endereco,Email,Telefone")] Client client)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(client);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(client);
         }
 
         // GET: Clients/Details/5
