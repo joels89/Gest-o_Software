@@ -5,7 +5,16 @@
 }
 
 <h1>Colaboradores</h1>
+<hr>
 
+<div class="input-group">
+    <div class="form-outline mb-4">
+        @if (User.IsInRole("gestor_projecto"))
+        {
+            <a asp-action="Create" class="btn btn-dark">Adicionar Colaborador</a>
+        }
+    </div>
+</div>
 
 <table class="table">
     <thead>
@@ -20,19 +29,29 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Funcao)
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Funcao)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<!--Divider-->
+<div class="divider-custom divider-light">
+    <div class="divider-custom-line"></div>
+    <div class="divider-custom-line"></div>
+    <div class="divider-custom-line"></div>
+</div>
 
 <div>
     <a asp-controller="Projects" asp-action="Index" class="btn btn-secondary btn-sm">&laquo; Voltar &raquo;</a>
 </div>
+
+
