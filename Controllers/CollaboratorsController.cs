@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gestao_Software.Data;
 using Gestao_Software.Models;
+using Gestao_Software.ViewModels;
 
-namespace Gestão_Software.Controllers
+namespace Gestao_Software.Controllers
 {
     public class CollaboratorsController : Controller
     {
@@ -24,6 +25,42 @@ namespace Gestão_Software.Controllers
         {
             var collaboratorContext = _context.Collaborator.Where(c => c.ProjectId == id);
             return View(await collaboratorContext.ToListAsync());
+        }
+
+        public async Task<IActionResult> List(string name, int page = 1)
+        {
+            var projectSearch = _context.Collaborator
+            .Where(b => name == null || b.Nome.Contains(name));
+
+            var pagingInfo = new PagingInfo
+            {
+                CurrentPage = page,
+                TotalItems = projectSearch.Count()
+            };
+
+            if (pagingInfo.CurrentPage > pagingInfo.TotalPages)
+            {
+                pagingInfo.CurrentPage = pagingInfo.TotalPages;
+            }
+
+            if (pagingInfo.CurrentPage < 1)
+            {
+                pagingInfo.CurrentPage = 1;
+            }
+            var collaborator = await projectSearch
+                .Include(b => b.Project)
+                .OrderBy(b => b.Nome)   
+                .ToListAsync();
+
+            return View(
+                new CollaboratorListViewModel
+                {
+                    Collaborators = collaborator,
+                    PagingInfo = pagingInfo,
+                    NameSearched = name
+
+                }
+            );
         }
 
         // GET: Collaborators/Details/5
