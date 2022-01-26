@@ -83,22 +83,10 @@ namespace Gestao_Software.Controllers
         }
 
         // GET: Collaborators/Create
-        public async Task<IActionResult> CreateAsync(int? id)
+        public IActionResult Create()
         {
-
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var collaborator = await _context.Collaborator.FindAsync(id);
-            if (collaborator == null)
-            {
-                return NotFound();
-            }
-
-            ViewData["ProjectId"] = new SelectList(_context.Project, "ProjectId", "Name", collaborator.ProjectId);
-            return View(collaborator);
+            ViewData["ProjectId"] = new SelectList(_context.Project, "ProjectId", "Name");
+            return View();
         }
 
         // POST: Collaborators/Create
