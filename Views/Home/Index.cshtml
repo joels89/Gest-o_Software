@@ -24,7 +24,11 @@
                 {
                     <a asp-controller="Projects" asp-action="Index" class="btn btn-dark"> Gerir projectos</a>
                 }
-                </div>
+                else
+                {
+                    <a asp-controller="Projects" asp-action="Index" class="btn btn-dark"> Consultar projectos</a>
+                }
+            </div>
         </div>
     </div>
     <div class="col">
@@ -39,19 +43,33 @@
                 {
                     <a asp-controller="Clients" asp-action="Index" class="btn btn-dark"> Gerir clientes</a>
                 }
-                </div>
-        </div>
+                else
+                {
+                    <a asp-controller="Clients" asp-action="Index" class="btn btn-dark"> Consultar clientes</a>
+                }
             </div>
+        </div>
+    </div>
     <div class="col">
         <div class="card h-100">
             <img src="~/img/team.png" class="card-img-top" alt="">
             <div class="card-body">
                 <h5 class="card-title"> Gestão Colaboradores</h5>
-                <p class="card-text"> Aqui é possivel gerir<br>a equipa de colaboradores<br>que trabalham nos projetos.</p>
+                <p class="card-text"> Aqui é possivel visualizar<br>a equipa de colaboradores<br>que trabalham nos projetos.</p>
             </div>
             <div class="card-footer">
-                <a asp-controller="Collaborators" asp-action="List" class="btn btn-dark"> Gerir Colaboradores</a>
+                @if (User.IsInRole("gestor_projecto"))
+                {
+                    <a asp-controller="Collaborators" asp-action="List" class="btn btn-dark"> Gerir Colaboradores</a>
+                }
+                else
+                {
+                    <a asp-controller="Collaborators" asp-action="List" class="btn btn-dark"> Consultar Colaboradores</a>
+                }
             </div>
         </div>
     </div>
 </div>
+
+<hr>
+<hr>
